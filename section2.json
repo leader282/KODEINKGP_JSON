@@ -1,0 +1,211 @@
+ {
+    "initialBasics": [
+        {
+            "Type": "lab",
+            "Elements":[
+                {
+                    "Question":"Compute the angles in degree of a triangle given its coordinates of its three vertices (to be read). The angles formed at vertices should be printed in the same order of the vertices describing the triangle.\r\nInput data set (coordinates of three vertices of a triangle)\r\n\r\n(i) (10,5), (-5,3), (2,2)\r\n(ii) (1,2), (5,5), (7,6.5)\r\n(iii) (0,0,), (5,0), (2.5, 5)\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\n#include<math.h>\r\n\r\nint main(){\r\n\r\n    \/\/ points are (x1,y1),(x2,y2),(x3,y3)\r\n    double x1, x2, x3;\r\n    double y1, y2, y3;\r\n    scanf(\"%lf%lf%lf%lf%lf%lf\",&x1,&y1,&x2,&y2,&x3,&y3);\r\n\r\n    double m1, m2;\r\n    m1 =(y2-y1)\/(x2-x1);\r\n    m2 =(y3-y2)\/(x3-x2);\r\n\r\n    \/\/condition of collinearity; if the three points lie on a straight line\r\n\r\n    if(m1==m2){\r\n        printf(\"Triangle coud not be formed; the points are collinear\\n\\n\\n\");\r\n        return 0;\r\n    }\r\n\r\n    double a, b, c;\r\n    \/\/length of the side opposite to pint (x1,y1) is a\r\n    \/\/length of the side opposite to pint (x2,y2) is b\r\n    \/\/length of the side opposite to pint (x3,y3) is c\r\n\r\n    a=sqrt( (x3-x2)*(x3-x2)+(y3-y2)*(y3-y2));\r\n    b=sqrt( (x1-x3)*(x1-x3)+(y1-y3)*(y1-y3));\r\n    c=sqrt( (x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));\r\n\r\n\r\n    double A, B, C;  \/\/ angle of the triangle are A, B, c\r\n    A =acos((b*b+c*c-a*a)\/(2*b*c));\r\n    B =acos((a*a+c*c-b*b)\/(2*a*c));\r\n    C =acos((a*a+b*b-c*c)\/(2*a*b));\r\n\r\n    \/\/ Angles A, B, and C calculated are in radians\r\n    \/\/ 1 radian =57.295779 degrees\r\n\r\n    const double degree= 57.295779;\r\n\r\n    printf(\"%lf degrees\\n\",A*degree);\r\n    printf(\"%lf degrees\\n\",B*degree);\r\n    printf(\"%lf degrees\\n\\n\\n\",C*degree);\r\n\r\n    return 0;\r\n\r\n}\r\n"
+                },
+                {
+                    "Question":"Compute the equivalent energy in Joule of a mass M (to be read) in gram (gm) using Einstein\u2019s mass energy equation.\r\nInput data set:\r\n(i) M=2\r\n(ii) M= 4.56\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\n#include<math.h>\r\n\r\nint main(){\r\n    double M;\r\n    scanf(\"%lf\",&M);\r\n    const long double c=3*100000000;\r\n    \/\/ c= speed of light; c=3*10^8m\/sec\r\n    double Energy;\r\n    M=M*0.001;\r\n    \/\/E=Mc^2\r\n    Energy=M*c*c;\r\n    printf(\"energy= %lf\\n\",Energy);\r\n}\r\n"
+                },
+                {
+                    "Question":"Read three numbers and return sum of their first and second maximum.\r\nInput data set\r\n(i) 4.8, -3.0, 2.9\r\n(ii) 7.8, 81.0, -4.0\r\n(iii) 4.0, 5.0, 6.0\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\n\r\nint main(){\r\n    double a, b, c;\r\n    scanf(\"%lf%lf%lf\",&a,&b,&c);\r\n    double total, sum;\r\n    total = a+b+c;\r\n    double min=a;\r\n    if(a>b){\r\n        min=b;\r\n        if(b>c)\r\n            min=c;\r\n    }\r\n    else if(a>c){\r\n        min=c;\r\n    }\r\n    sum=total-min;\r\n    printf(\"sum: %lf\\n\",sum);\r\n\r\n}\r\n"
+                },
+                {
+                    "Question":"Write a C program which evaluates the function f(x) as shown in the following figure given an input x (a real number) and prints the result:",
+                    "Answer":
+                    "#include<stdio.h>\r\n\r\nint main(){\r\n    double x;\r\n    scanf(\"%lf\",&x);\r\n    double y;\r\n    \/\/y=f(x)\r\n    if(x>=0&&x<=5){\r\n        \/\/f(x)=3x for x in range [0,5]\r\n        y=3*x;\r\n        printf(\"f(x)=%lf\\n\",y);\r\n\r\n    }\r\n    else if(x>5&&x<=10){\r\n        \/\/f(x)=30-3x fpr x in range (5,10]\r\n        y=30-3*x;\r\n        printf(\"f(x)=%lf\\n\",y);\r\n\r\n    }\r\n    else if(x>10&&x<=30){\r\n        \/\/f(x)= 0.75x -7.5 for x in range (10,30]\r\n        y=0.75*x-7.5;\r\n        printf(\"f(x)=%lf\\n\",y);\r\n\r\n    }\r\n    \/\/f(x) is defined only in the range [0,30]\r\n    else printf(\"Undefined\\n\");\r\n}\r\n"
+                }
+            ]
+            
+        },
+        {
+            "Type":"theory",
+            "Elements": [
+                {
+                    "Question":"Consider the following program.\r\nint main() {\r\nint a = 13, b = 5, c = 7;\r\nfloat x; int y; char z;\r\nx = 4*4\/3*a\/b;\r\nprintf(\"X=%3.2f\",x);    (A)\r\ny = 3.0*b\/c\/a;\r\nprintf(\"Y = %d\",y);    (B)\r\na += a*a%2; a %= 2;\r\n(a)? printf(\"Good\") : printf(\"Nice\");    (C)\r\nreturn (0);\r\n}\r\nWhat value the program will print at (A), (B) and (C)?\r\n",
+                    "Answer":
+                    " (A) X= 13.00\r\n(B) Y= 0\r\n(C) Nice\r\n"
+                }              
+            ]
+        }
+        ],
+    "loops":[
+        {
+            "Type": "lab",
+            "Elements":[
+                {
+                    "Question":"Compute the following function given a value of x ( a real number) with the accuracy of 10^-6\r\n:f(x)= 1-x^2\/2! + x^4\/4! \u2013x^6\/6!+.....\r\n\r\nProvide outputs for x= 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 and 1.0.\r\nFor each value of x print also the number of iterations required to converge with the said accuracy.\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\n\r\nint main(){\r\n  double x, sum=0.0, n=1.0;\r\n   scanf(\"%lf\",&x);\r\n   int i;\r\n   for(i=1;n>0.000001||n<-0.000001;i++){\r\n        sum+= n;\r\n       n=-n*x*x\/(2*i)\/(2*i-1);\r\n\r\n   }\r\n   printf(\"iterations: %d\\n\",i);\r\n   printf(\"sum: %lf\\n\\n\",sum);\r\n\r\n}\r\n"
+                }
+            ]
+            
+        },
+        {
+            "Type":"theory",
+            "Elements": [
+                {
+                    "Question":"We are given eight integers in the input to a C program, out of which all except a single one is distinct. We wish to print the value of the unique distinct integer and also determine the variable in the input order corresponding to the distinct value. Use a single scanf statement to read all the eight integers, say, a, b, c, d, e.f, g and h. Do not use arrays. For example, if the sequence is 1 1 1 1 1 2 1 1 then we must print that 2 is the unique distinct value\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\nint main() {\r\n    int a,b,c,d,e,f,g,h;\r\n    scanf(\"%d %d %d %d %d %d %d %d\", &a, &b, &c, &d, &e, &f, &g, &h );\r\n    if (a+b==c+d) {\r\n        if (e==f) {\r\n            if (e==g) printf (\"8th number (%d) is distinct\\n\",h);\r\n            else printf(\"7th number (%d) is distinct\\n\",g);\r\n        }\r\n        else {\r\n            if (e==g) printf (\"6th number (%d) is distinct\\n\",f);\r\n            else printf(\"5th number (%d) is distinct\\n\",e);\r\n        }\r\n    }\r\n    else {\r\n        if (a==b) {\r\n            if (c==a) printf (\"4th number (%d) is distinct\\n\",d);\r\n            else printf(\"3rd number (%d) is distinct\\n\",c);\r\n        }\r\n        else {\r\n            if (a==c) printf (\"2nd number (%d) is distinct\\n\",b);\r\n            else printf(\"1st number (%d) is distinct\\n\",a);\r\n        }\r\n    }\r\n    return 0;\r\n}\r\n"
+                },
+                {
+                    "Question":"Write a C program to read in a positive integer n and find the digit which occurs the maximum number of times in n along with its frequency. For example, if the input is 567755, then the answer is 5 and its frequency is 3. Do not use arrays or any library functions other than standard input and output. There should be only one main function and no other functions defined by you.\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\nmain()\r\n{\r\n    int m, n, maxdigit, maxfreq, tempfreq, i, j;\r\n    scanf(\"%d\", &n);\r\n    printf(\"n = %d \\n\", n);\r\n    maxdigit = -1;\r\n    maxfreq = 0;\r\n    for (i = 0; i < 10; i++)\r\n    {\r\n        m = n;\r\n        tempfreq = 0;\r\n        while (m > 0)\r\n        {\r\n            if (m%10 == i) tempfreq++;\r\n            m = m\/10;\r\n        }\r\n        if (tempfreq > maxfreq)\r\n        {\r\n            maxfreq = tempfreq;\r\n            maxdigit = i;\r\n        }\r\n    }\r\n    printf(\"Digit %d has maximum frequency of %d \\n\", maxdigit, maxfreq);\r\n}\r\n"
+                },
+                {
+                    "Question":"Write a program which reads a list of 10 numbers in ascending order. It then prints the pairs of consecutive numbers having maximum and minimum differences respectively. Your program should have only one main() function and no other functions\r\n",
+                    "Answer":
+                    "#include <stdio.h>\r\nint main(){\r\n    int i, diff, maxdiff = 0, mindiff, k1, k2, mink1, mink2, maxk1, maxk2;\r\n    scanf(\"%d\", &k1);\r\n    scanf(\"%d\", &k2);\r\n    mindiff = diff = k2 - k1;\r\n    maxk1 = mink1 = k1;\r\n    maxk2 = mink2 = k2;\r\n    for(i=2; i<10; i++){\r\n        k1 = k2;\r\n        scanf(\"%d\", &k2);\r\n        diff = k2 - k1;\r\n        if(diff < mindiff){\r\n            mindiff = diff;\r\n            mink1 = k1;\r\n            mink2 = k2;\r\n        }\r\n        if(diff > maxdiff){\r\n            maxdiff = diff;\r\n            maxk1 = k1;\r\n            maxk2 = k2;\r\n        }\r\n    }\r\n    printf(\"Pair with minimum difference: %d %d\\n\", mink1, mink2);\r\n    printf(\"Pair with maximum difference: %d %d\\n\", maxk1, maxk2);\r\n    return 0;\r\n}\r\n"
+                }
+            ]
+        }
+
+    ],
+    "1dArrayAndStrings":[
+        {
+            "Type": "lab",
+            "Elements":[
+                {
+                    "Question":"Write an interactive C program that converts a positive integer (to be read) , which is less than 500, to a Roman numeral. For example, 12 will be converted to XII, 14 will be converted to XIV, 56 will be converted to LVI, and so on.\r\nYou should use only the following Roman numeral symbols: I - one, V - five, X - ten, L - fifty, C - 100. Design the program so that it executes repeatedly, until a value of zero is read in from the keyboard.\r\n\r\nProvide the output for the following sequence of numbers:\r\n25, 48, 92, 243, 137, 337, 485, 7, 18, 50, 100, 200, 300, 400, 500, 0\r\n",
+                    "Answer":
+                    "#include <stdio.h>\r\n\r\nint main(){\r\n    int a;\r\n    while(1){\r\n        printf(\"Enter the number: \");\r\n        scanf(\"%d\", &a);\r\n        if (a==0) break;\r\n        printf(\"%d\\n\", a);\r\n        char roman_num[15], roman_letters[5]={'C', 'L', 'X', 'V', 'I'};\r\n        int digit=a\/100, pos=digit;\r\n        for (int i=0; i<digit; i++){\r\n            roman_num[i]=roman_letters[0];\r\n        }\r\n        digit=(a%100)\/10;\r\n        for (int i=1; i<4; i+=2){\r\n            if (digit==4 || digit==9){\r\n                roman_num[pos]=roman_letters[i+1];\r\n                switch (digit){\r\n                    case 4: roman_num[pos+1]=roman_letters[i]; break;\r\n                    case 9: roman_num[pos+1]=roman_letters[i-1]; break;\r\n                }\r\n                \/\/OR roman_num[pos+1]=roman_letters[i-(digit\/5)];\r\n                pos+=2;\r\n            }\r\n            else{\r\n                if (digit>=5){\r\n                    roman_num[pos]=roman_letters[i];\r\n                    pos+=1;\r\n                    digit-=5;\r\n                }\r\n                for (int j=pos; j<digit+pos; j++){\r\n                    roman_num[j]=roman_letters[i+1];\r\n                }\r\n                pos+=digit;\r\n            }\r\n            digit=a%10;\r\n        }\r\n        roman_num[pos]='\\0';\r\n        printf(\"%d in Roman Numerals: %s\\n\\n\", a, roman_num);\r\n    }\r\n}\r\n"
+                },
+                {
+                    "Question":"Read N (to be read) 2-D coordinate points in two different arrays for X and Y coordinates, respectively. It then reads X and Y coordinates of a point p and compute its closest and furthest points in the list. Print those pairs and their distances from p. It also prints the average distance of N points from p.\r\n\r\nProvide output for the following input data set.\r\n(i) N=4\r\n(1,1), (5.87,5), (1,10.45), (10,1)\r\np=(2.4, 3.8)\r\n(ii) N=8\r\n(-1,45.4), (5.8,5), (8,9.45), (-5.12,-67), (3,45.89), (-4,-4.6), (12,-50.12),(50,-50)\r\np=(-5.0, 4.7)\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\n#include<math.h>\r\nint main(){\r\n    int  N,j,k,a,b,max=0,min=0;\r\n    float x[N],y[N],d[N];\r\n    float px,py,sum=0,avg;\r\n    scanf(\"%d\",&N);\r\n    for(j=0;j<N;j++){\r\n        scanf(\"%f%f\",&x[j],&y[j]);\r\n    }\r\n    scanf(\"%f%f\",&px,&py);\r\nfor(k=0;k<N;k++){\r\n    d[k]= sqrt(pow((px-x[k]),2)+ pow((py-y[k]),2));\r\n    sum+=d[k];\r\n}\r\navg=sum\/N;\r\n\r\nfor(a=0;a<N;a++){\r\n    if(d[a]>d[max]) max=a;\r\n}\r\nfor(b=0;b<N;b++){\r\n    if(d[b]<d[min]) min=b;\r\n}\r\n    printf(\"max dist is of the point(%f,%f)\\n\",x[max],y[max]);\r\n    printf(\"min dist is of the point(%f,%f)\\n\",x[min],y[min]);\r\n    printf(\"average distance=%f\\n\\n\",avg);\r\n}\r\n"
+                },
+                {
+                    "Question":"In the PDS laboratory there are four components as shown below:\r\nRegular Assignments (RA): 40\r\nLab Test-I (LT-I): 25\r\nLab Test-II (LT-II):25\r\nTA assessment (TA): 10\r\n\r\nWrite a program, which reads marks of every student in four components (ra,lt1,lt2,ta), such that re, lt1, lt2 and ta denote marks for RA (out of 100), LT-I (out of 100), LT-II (out of 100) and TA (out of 100) in four separate arrays. The program computes the total marks in the PDS laboratory and store it in another array. Finally it prints the total marks for every students rounded to the nearest integer, followed by their mean, standard deviation, maximum and minimum. It also prints the number of students who got grades EX, A, B, C, D, P, and F. The grading policy is provided below.\r\nEX >89, 90>A>79, 80>B>69, 70>C>59, 60>D>49, 50>P>34, F<35\r\n\r\nProvide output for the following input data set.\r\n(i) N=5\r\n(70,60,50,20), (90,80,70,100), (20,30,50,80), (60,80,95,65), (100,95,94,30)\r\n(ii) N=10\r\n(60,20,30,10), (80,90,70,38), (44,37,86, 78), (89,28,35,95), (91,24,80,83), (30,60,80,67), (90,20,10,100), (100,92,100,100), (25,59,80,82), (20,10,5,3)\r\n",
+                    "Answer":
+                    "#include <stdio.h>\r\n#include<math.h>\r\n\r\nint main(){\r\nint i, n;\r\nscanf(\"%d\",&n);\r\nfloat ra[n],lt1[n],lt2[n],ta[n],score[n];\r\nint total_marks[n];\r\nfor(i=0;i<n;i++){\r\n    scanf(\"%f%f%f%f\",&ra[i],&lt1[i],&lt2[i],&ta[i]);\r\n    score[i]=(ra[i]*40+ lt1[i]*25+ lt2[i]*25+ ta[i]*10)\/100;\r\n\r\n    if((score[i]-(int)score[i])>=0.5)\r\n        total_marks[i]= (int)score[i]+1;\r\n    else\r\n        total_marks[i]= (int)score[i];\r\n\r\n    printf(\"Total marks scored by student %d = %d\\n\",i+1,total_marks[i]);}\r\n\r\n\r\nfloat avg,sum=0;\r\nint m;\r\nfor(m=0;m<n;m++){\r\n    sum+=score[m];\r\n}\r\n\r\navg=sum\/n;\r\nprintf(\"avg marks= %f\\n\",avg);\r\n\r\nfloat stddev, squares=0;\r\nint y;\r\nfor(y=0;y<n;y++){\r\n    squares+= pow((score[y]-avg),2);\r\n}\r\nstddev= sqrt(squares\/n);\r\nprintf(\"standard deviation = %f\\n\",stddev);\r\n\r\n float max=score[0], min=score[0];\r\nint j,k;\r\nfor(j=1;j<n;j++){\r\n    if(score[j]>max) max=score[j];\r\n}\r\nfor(k=1;k<n;k++){\r\n    if(score[k]<min) min=score[k];\r\n}\r\nprintf(\"max total score is %f\\n\", max);\r\nprintf(\"min total score is %f\\n\", min);\r\n\r\n\r\nint EX=0,A=0,B=0,C=0,D=0,P=0,F=0; int p;\r\nfor(p=0;p<n;p++){\r\nif(total_marks[p]>89) EX++;\r\nelse if (total_marks[p]>79) A++;\r\nelse if (total_marks[p]>69) B++;\r\nelse if (total_marks[p]>59) C++;\r\nelse if (total_marks[p]>49) D++;\r\nelse if (total_marks[p]>34) P++;\r\nelse if (total_marks[p]<35) F++;\r\n}\r\nprintf(\"No. of studennts who got EX= %d\\n\",EX);\r\nprintf(\"No. of studennts who got A= %d\\n\",A);\r\nprintf(\"No. of studennts who got B= %d\\n\",B);\r\nprintf(\"No. of studennts who got C= %d\\n\",C);\r\nprintf(\"No. of studennts who got D= %d\\n\",D);\r\nprintf(\"No. of studennts who got P= %d\\n\",P);\r\nprintf(\"No. of studennts who got F= %d\\n\\n\\n\",F);\r\n}\r\n"
+                }
+            ]
+            
+        },
+        {
+            "Type":"theory",
+            "Elements": [
+                {
+                    "Question":"Consider the following program fragment, where i, j, count are int type variables, and a, b and c are 50 element character arrays. What will be printed if we enter the strings \u201CProgramming\u201D, \u201CProblems\u201D and \u201CData\u201D from the keyboard (in that order)?\r\n    scanf(\"%s%s%s\", a, b, c);\r\n    i = 0; count = 0;\r\n    while (a[i] != '\\0') {\r\n        j = 0;\r\n        while (b[j] != '\\0') {\r\n            if (a[i] != b[j]) {\r\n                j++;\r\n                continue;\r\n            }\r\n            else {\r\n                count++;\r\n                break;\r\n            }\r\n        }\r\n    i++;\r\n}\r\nprintf (\"%d\", count);\r\n",
+                    "Answer":
+                    "6"
+                },
+                {
+                    "Question":"A group of students receive grades for a subject and you are interested in seeing the grade distribution. Write a program that takes as input the number of students n and then reads n grades (integers in the set {1, 2, 3, 4, 5}) into an array A[0,...,n-1]. The output should be a bar graph with bars represented by sequence of \u2019#\u2019 characters. You are allowed to use constant amount of additional storage. Assume 1 \u2264 n \u2264 60. \r\nSample Input\/Output\r\nEnter n (<=60) : 10\r\nEnter 10 grades: 2 3 4 5 2 2 1 3 3 3\r\n   #\r\n ##\r\n ##\r\n#####\r\n",
+                    "Answer":
+                    "#include <stdio.h>\r\nint main(){\r\nint n, i, j, max = -1;\r\nint A[60], B[6] = {0,0,0,0,0,0};\r\nprintf(\"Enter n (<=60): \");\r\nscanf(\"%d\", &n);\r\nif (n >60 || n <1){\r\nprintf(\"n should be positive and at most 60.\\n\\n\");\r\nreturn 1;\r\n}\r\nprintf(\"Enter %d grades: \", n);\r\nfor(i=0; i<n; i++){\r\nscanf(\"%d\", &A[i]);\r\nif (A[i] < 1 || A[i] > 5){\r\nprintf(\"Array elements must be positive and at most 5.\\n\\n\");\r\nreturn 2;\r\n}\r\nB[A[i]]++;\r\n}\r\nmax = B[1];\r\nfor(i=2; i<=5; i++)\r\nif(B[i] > max)\r\nmax = B[i];\r\nfor(j=max; j>=1; j--){\r\nfor(i=1; i<=5; i++){\r\nif(B[i] >= j)\r\nprintf(\"#\");\r\nelse\r\nprintf(\" \");\r\n}\r\nprintf(\"\\n\");\r\n}\r\nreturn 0;\r\n}\r\n"
+                }
+            ]
+        }
+    ],
+    "functionsAndRecursions":[
+        {
+            "Type": "lab",
+            "Elements":[
+                
+                {
+                    "Question":"Consider the following function prototype.\r\n\r\nint check_triangle(float l1, float l2, float l3);\r\n\r\nThe function takes three real numbers, l1, l2 and l3 as lengths of straight line segments, and returns an integer subject to possibility of forming a geometric shape as stated below:\r\n0: neither a straight line, nor a triangle.\r\n1: a straight line\r\n2: a non-right angled and non-equilateral triangle\r\n3: a right angled triangle\r\n4: an equilateral triangle\r\n\r\nSuppose a triplet (lt1, lt2, lt3) denote the lengths of three straight line segments. Write a C-program to implement the above function and the program reads N triplets of lengths in three different arrays for lt1, lt2 and lt3, respectively. It prints the statement of geometric shape from the return value of the function for each of the triplet. It also prints the numbers of triangles, straight lines, right angles and equilateral angles those are possible to form from the\r\nset of triplets.\r\nRun the program with the following input data set:\r\n(i) N=10\r\n(3, 5, 7), (2, 10, 4), (1, 2, 3), (3, 4, 5), (6, 6, 6), (12, 13, 5), (8, 15, 7), (100, 300, 15), (89, 89, 89), (23, 37, 47)\r\n(ii) N=10\r\n(3.2, 5.3, 7.8), (2.2, 10.9, 4.7), (1.2, 2.2, 3.2), (3.7, 4.9, 5.2), (6.6, 6.6, 6.6), (12, 13, 5), (8, 15, 7), (100, 300, 15), (89, 89, 89), (23.2, 37.9, 47.1)\r\n",
+                    "Answer":
+                    "#include <stdio.h>\r\n#include<math.h>\r\n\r\nint check_triangle(float l1, float l2, float l3){\r\n        float max;\r\n    if((l1+l2==l3)||(l2+l3==l1)||(l3+l1==l2)){\r\n        return 1;\r\n    }\r\n    else if((l1+l2<l3)||(l2+l3<l1)||(l3+l1<l2))\r\n        return 0;\r\n    else {\r\n        if(l1==l2&&l2==l3) return 4;\r\n        if((l1*l1+l2*l2==l3*l3)||(l3*l3+l2*l2==l1*l1)||(l1*l1+l3*l3==l2*l2)) return 3;\r\n        else return 2;\r\n    }\r\n}\r\n\r\nint main(){\r\n    int N;\r\n    scanf(\"%d\",&N);\r\n    int shape[N];\r\n    float lt1[N],lt2[N],lt3[N];\r\n    int stline=0,nonequiandright=0,equitriangle=0,righttriangle=0;\r\n    int i;\r\n\r\n    for(i=0;i<N;i++){\r\n        scanf(\"%f%f%f\",&lt1[i],&lt2[i],&lt3[i]);\r\n        shape[i]= check_triangle(lt1[i],lt2[i],lt3[i]);\r\n        printf(\"Shape of triangle %d= %d \\n\",i+1,shape[i]);\r\n\r\n        if(shape[i]==1) stline++;\r\n        else if(shape[i]==2) nonequiandright++;\r\n        else if(shape[i]==3) righttriangle++;\r\n        else if(shape[i]==4) equitriangle++;\r\n    }\r\n    printf(\"No. of straight lines= %d\\n\",stline);\r\n    printf(\"No. of right angles= %d\\n\", righttriangle);\r\n    printf(\"No. of equilateral angles= %d\\n\",equitriangle*3);\r\n    printf(\"No. of non right angled non equilateral triangles= %d\\n\",nonequiandright);\r\n    printf(\"Total no. of triangles= %d\\n\\n\\n\", righttriangle+equitriangle+ nonequiandright);\r\n\r\n}\r\n"
+                },
+                
+                {
+                    "Question":"Write a program which reads first name and family name of a person. It also reads a character (M or F) to know the gender of the person (M for male and F for female). Finally forms a string containing the full name of the person in the following format.\r\nA prefix (\u2018Mr.\u2019 for male and \u2018Ms.\u2019 for female) followed by a space and then the first letter of the first name (in uppercase) followed by a (.), a space and the family name, first letter of which should be in uppercase. For example given the input \u201CSantanu\u201D, \u201CJohn\u201D and \u2018M\u2019, it should form a string \u201CMr. S. John\u201D. Print the string containing the full name in the above format, and also print the number of vowels, and consonants in it.\r\nRun the program with the following input data set:\r\n(i) \u201CAbdel\u201D, \u201CHalim\u201D, \u2018M\u2019\r\n(ii) \u201CUpasana\u201D, \u201CNaskar\u201D, \u2018F\u2019\r\n(iii) \u201CVellupuri\u201D, \u201CSudarshan\u201D, \u2018M\u201D\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\n#include<string.h>\r\n\r\nint main(){\r\n    char first_name[40], family_name[40];\r\n    char gender;\r\n    int vowels=0,consonants=2;\r\n\r\n    scanf(\" %s %s \",first_name,family_name);\r\n    gender=getchar();\r\n\r\n    char output[50];\r\n    if (gender=='F'){\r\n        output[0]='M' ;\r\n        output[1]='s';\r\n        output[2]='.';\r\n        output[3]=' ';\r\n\r\n    }\r\n    else if(gender=='M'){\r\n        output[0]='M' ;\r\n        output[1]='r';\r\n        output[2]='.';\r\n        output[3]=' ';\r\n    }\r\n    output[4]=first_name[0];\r\n    output[5]='.';\r\n    output[6]=' ';\r\n\r\n    int i,lfa,lfi;\r\n    lfa=strlen(family_name);\r\n    lfi=strlen(first_name);\r\n\r\n    for(i=0;i<lfa;i++){\r\n        output[i+7]=family_name[i];\r\n    }\r\n    for(i=0;i<lfa;i++){\r\n\r\n        if(family_name[i]=='a'||family_name[i]=='e'||family_name[i]=='i'||family_name[i]=='o'||family_name[i]=='u'||\r\n        family_name[i]=='A'||family_name[i]=='E'||family_name[i]=='I'||family_name[i]=='O'||family_name[i]=='U'){\r\n            vowels++;\r\n        }\r\n        else consonants++;\r\n    }\r\n    output[lfa+7]='\\0';\r\n\r\n\r\n\r\n        if(first_name[0]=='a'||first_name[0]=='e'||first_name[0]=='i'||first_name[0]=='o'||first_name[0]=='u'||\r\n        first_name[0]=='A'||first_name[0]=='E'||first_name[0]=='I'||first_name[0]=='O'||first_name[0]=='U'){\r\n            vowels++;\r\n        }\r\n        else consonants++;\r\n\r\n\r\n    printf(\"Output string= %s \\n\", output);\r\n    printf(\"vowels= %d \\n\",vowels);\r\n    printf(\"consonants= %d \\n\\n\",consonants);\r\n}\r\n"
+                },
+                
+                {
+                    "Question":"Write a function named convertRealNumber(.) which converts a string representing a real number in the decimal format followed by a space and its unit (either in cm or in ft), into a floating point number in meter. For example, \u201C123.25 cm\u201D is converted as 1.2325, and \u201C3.5 ft\u201D as 1.0668.\r\nWrite a program to read N (to be read first) strings denoting measurements of length in the above format and each given in a separate line. The program computes the maximum, minimum and average lengths in meter.\r\nRun the program with the following input data set:\r\n(i) N=5\r\n2.54 cm\r\n3.78 ft\r\n17.85 cm\r\n25.4 cm\r\n5.6 ft\r\n\r\n(i) N=10\r\n12.54 cm\r\n13.78 ft\r\n178.85 cm\r\n235.4 cm\r\n54.6 ft\r\n12.4 cm\r\n8.9 ft\r\n73.4 cm\r\n125.8 cm\r\n29.45 ft\r\n",
+                    "Answer":
+                    "#include <stdio.h>\r\n#include <math.h>\r\n\r\nfloat convertRealNumber(char length[]){\r\n    int digit, j=0, decimal=0;\r\n    float num=0;\r\n\r\n    \/\/converting real number in string to float \r\n    while (length[j]!=' '){\r\n        digit=length[j]-48;\r\n        if (length[j]=='.'){\r\n            decimal=j;\r\n            j+=1;\r\n            continue;\r\n        }\r\n        if (decimal==0){\r\n            num=(num*10)+digit;\r\n        }\r\n        else {\r\n            num+=(digit*pow(0.1, j-decimal));\r\n        }\r\n        j+=1;\r\n    }\r\n\r\n    \/\/converting ft or cm to meters\r\n    if (length[j+1]=='f'){\r\n        num*=0.3048;\r\n    }\r\n    else {\r\n        num*=0.01;\r\n    }\r\n    return num;\r\n}\r\n\r\nint main(){\r\n    int N;\r\n    printf(\"Enter number of entries (N): \");\r\n    scanf(\"%d\", &N);\r\n    printf(\"%d\\n\", N);\r\n    char a=getchar();\r\n    float result, max=0, min, total=0;\r\n\r\n    \/\/taking input for lengths and calculating min, max and total sum simultaneously\r\n    for (int i=0; i<N; i++){\r\n        printf(\"Enter length: \");\r\n        char length[20];\r\n        scanf(\"%[^\\n]s\", length);\r\n        printf(\"%s\\n\", length);\r\n        a=getchar();\r\n        result=convertRealNumber(length);\r\n        if (i==0) {\r\n            min=result;\r\n        }\r\n        if (result>max){\r\n            max=result;\r\n        }\r\n        if (result<min) {\r\n            min=result;\r\n        }\r\n        total+=result;\r\n        printf(\"%f\\n\", result);\r\n    }\r\n    printf(\"Maximum length (in meters) = %f\\nMinimum length (in meters) = %f\\nAverage length (in meters) = %f\\n\\n\", max, min, (total\/N));\r\n    return 0;\r\n}\r\n"
+                }
+            ]
+            
+        },
+        {
+            "Type":"theory",
+            "Elements": [
+                {
+                    "Question":"Write a C function that has three positive integer arguments n, m, k and returns the third largest integer p, p <= k, such that p divides both n and m. It returns 0 if there is no such third largest p > 0. For example, n = 200, m = 100, k = 80, result is 20. Again, if n = 35, m = 25, k = 18, then the result is 0. Do not use arrays or any library functions other than standard input and output. Write the function and the main program. In the main program, read the inputs, call the function and print the result.\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\n\r\nint third(int n, int m, int k)\r\n{\r\n    int count, i;\r\n    count = 0;\r\n    for(i = k; i> 0; i--)\r\n    {\r\n        if ((n%i == 0) && (m%i == 0)) count++;\r\n        if (count == 3) break;\r\n    }\r\n    if (count == 3) return (i);\r\n    else return (0);\r\n}\r\nmain()\r\n{\r\n    int n, m, k;\r\n    scanf(\"%d%d%d\", &n, &m, &k);\r\n    printf(\"n = %d, m = %d, k = %d \\n\", n, m, k);\r\n    printf(\"Result = %d \\n\", third(n,m,k));\r\n}\r\n"
+                },
+                {
+                    "Question":"Write a function which takes as input two integer arrays, a[] and b[], of size n and prints only those numbers which appear in both the arrays. Assume that for each array, the elements are provided in ascending order. Each array stores n elements, with no duplication of the elements. Also, assume that n \u2264 100.\r\n",
+                    "Answer":
+                    "to be updated"
+                },
+                {
+                    "Question":"Write a recursive function that takes as input an integer n and returns the sum of all its digits that are \u2264 5. For example, on input 934072856, the output should be 14. In the main() function, read an integer x and print the whatever the function returns on input x.\r\n",
+                    "Answer":
+                    "#include <stdio.h>\r\n\r\nint sumDigits5(int n){\r\n    int sum = 0, d;\r\n    if(n == 0)\r\n        return 0;\r\n    if(n%10 <= 5)\r\n        sum = sumDigits5(n\/10) + (n%10);\r\n    else\r\n        sum = sumDigits5(n\/10);\r\n    return sum;\r\n}\r\n\r\nint main(){\r\n    int x;\r\n    printf(\"x = \");\r\n    scanf(\"%d\", &x);\r\n    printf(\"%d\\n\",sumDigits5(x));\r\n    return 0;\r\n}\r\n"
+                }
+            ]
+        }
+
+    ],
+    "structuresAndPointers":[
+        {
+            "Type": "lab",
+            "Elements":null
+            
+        },
+        {
+            "Type":"theory",
+            "Elements": null
+        }
+
+    ],
+    "sortingAnd2dArrays":[
+        {
+            "Type": "lab",
+            "Elements":null
+            
+        },
+        {
+            "Type":"theory",
+            "Elements": [
+                {
+                    "Question":"We know that in a sorted array A of n distinct integers, A[i] has rank i, that is, A[i] is larger than exactly i elements in the array A, as in the example for n = 8 = 2^3, A = {2, 4, 47, 56, 99, 100, 120}. If A is not sorted as for the case n = 4 and A = {2, 1, 5, 7}, A[0] has rank 1 and not 0.\r\n(a) Write a C program to sort an unsorted given array A of n = 2k distinct integers by computing the rank of each element in A, where k is any positive integer. So, you need to read n, and the entire unsorted array A of n distinct integers, sort the array A, and print the sorted array. You must also print the rank of all the n elements of A.\r\n\r\nThe shuffle operation on an array A is as follows, where we assume that n = 2^k. For all even i, 0 \u2264 i \u2264 n \u2212 2, we must place these numbers in the same order in the first half of the array A, and for all odd i, 1 <= i <= n \u2212 1, we must place A[i] in the same order in the second half of the array. So, for A = {1, 3, 4, 56, 77, 111, 222, 8888}, we must transform A so that A becomes {1, 4, 77, 222, 3, 56, 111, 888}.\r\n(b) Your program must further shuffle the sorted array of part (1), k times where we assume that n = 2^k, for any positive integer k. After each shuffle, you must print the array. Shuffling the above array A = {1, 4, 77, 222, 3, 56, 111, 888} gives A = {1, 77, 3, 111, 4, 222, 56, 888}.\r\n",
+                    "Answer":
+                    "#include<stdio.h>\r\n\r\nint main (){\r\n    int A[100],B[100],n,i,j,rank[100];\r\n    printf(\"Enter an integer\\n\");\r\n    scanf(\"%d\",&n);\r\n    printf(\"Enter %d distinct integers \\n\",n);\r\n    for (i=0;i<n;i++){\r\n        scanf(\"%d\",&A[i]);\r\n    }\r\n    for (i=0;i<n;i++) {\r\n        rank[i]=0;\r\n        for (j=0;j<n;j++) {\r\n            if (A[j]<A[i])\r\n            rank[i]++;\r\n        }\r\n        B[rank[i]]=A[i];\r\n    }\r\n    for (i=0;i<n;i++){\r\n        A[i]=B[i];\r\n    }\r\n    printf(\"The sorted array is\\n\");\r\n    for (i=0;i<n;i++){\r\n        printf(\"%d \",A[i]);\r\n    }\r\n    printf(\"\\n\");\r\n\r\n    printf(\"The rank array is\\n\");\r\n    for (i=0;i<n;i++){\r\n        printf(\"%d \",rank[i]);\r\n    }\r\n    printf(\"\\n\");\r\n    int nn; int c = 1;\r\n    for (nn=n;nn!=1;nn=nn\/2) {\r\n        for (i=0;i<n;i++) {\r\n            if (i%2==0)\r\n                B[i\/2]=A[i];\r\n            else\r\n                B[n\/2+i\/2]=A[i];\r\n        }\r\n        for (i=0;i<n;i++){\r\n            A[i]=B[i];\r\n        }\r\n        printf(\"The array after shuffle %d is\\n\", c);\r\n        for (i=0;i<n;i++){\r\n            printf(\"%d \",A[i]);\r\n        }\r\n        printf(\"\\n\");\r\n        c++;\r\n    }\r\n}\r\n"
+                }
+            ]
+        },
+        {
+            "Type":"labTests",
+            "Elements": [
+                {
+                    "Question":"Write a program which reads two lists of numbers of length M (to be read) and N (to be read) in two different arrays, A and B, respectively. The program stores all the even numbers from A and B to A, and all the odd numbers from A and B to B. Print the values (final contents) stored in arrays A and B in separate lines, where the numbers are printed from the first to last locations of an array consecutively separated by a blank space, however the maximum element of the list is printed first followed by all other elements in any order. [Check the format of output given below in the example.]\r\nFor example, consider the following input data:\r\nM=6 (Size of the list to be read in A)\r\n12, 10, 13, 7, 4, 0 (Numbers to be read in A )\r\nN=5\r\n10,4,3,9,2 (Numbers to be read in B)\r\n\r\nOutputs for the above input data (Follow this format while printing\r\nresults):\r\n----------------------------------------\r\nArray A (List of even numbers):\r\n12 10 4 0 10 4 2\r\n\r\nArray B (List of odd numbers)\r\n13 7 3 9\r\n---------------------------------------\r\n\r\nTest your program for the following input data sets:\r\n(i)\r\nM=10\r\n1, 4, 2, 6, 8, 9, 0, 1, 7, 5\r\nN=7\r\n135, 100, 250, 99, 123, 7, 4\r\n(ii)\r\nM=8\r\n46, 35, 57, 79, 88, 24, 22, 12\r\nN=4\r\n135, 105, 255, 999\r\n",
+                    "Answer":
+                    "#include <stdio.h>\r\n\r\nint main() {\r\n  int M,N;\r\n  printf(\"please enter the number of values you want to give in List A\\n\");\r\n  scanf(\"%d\", &M);\r\n  printf(\"please enter the number of values you want to give in List B\\n\");\r\n  scanf(\"%d\", &N);\r\n\r\n  int A[M + N], B[M + N];\r\n\r\n  printf(\"please enter the values for list A:\\n\");\r\n  for (int i = 0; i < M; i++){\r\n        scanf(\"%d\", &A[i]);\r\n  }\r\n  printf(\"please enter the values for list B:\\n\");\r\n  for (int i = 0; i < N; i++){\r\n        scanf(\"%d\", &B[i]);\r\n  }\r\n\r\n  int even[M + N], j = 0, p = 0, odd[M+N];\r\n  \/\/extracting odd and even from list A\r\n  for (int i = 0; i < M; i++){\r\n        if (A[i]%2 == 0 ){\r\n          even[j] = A[i];\r\n          j++;\r\n        }\r\n        else {\r\n          odd[p] = A[i];\r\n          p++;\r\n        }\r\n  }\r\n  \/\/extracting odd and even from list B\r\n  for (int i = 0; i < N; i++){\r\n        if (B[i]%2 == 0 ){\r\n          even[j] = B[i];\r\n          j++;\r\n        }\r\n        else {\r\n          odd[p]= B[i];\r\n          p++;\r\n        }\r\n  }\r\n\r\n  \/\/Assigning the even numbers to list A\r\n\r\n  for (int i = 0; i < j; i++){\r\n    A[i] = even[i];\r\n\r\n  }\r\n  \/\/Assigning the odd numbers to list B\r\n\r\n  for (int i = 0; i < p; i++){\r\n    B[i] = odd[i];\r\n\r\n  }\r\n\r\n  \/\/ Now the length of Array A is J(for even numbers) and Array B is P(for odd numbers)\r\n\r\n\/\/finding the maximum in A\r\nint max = A[0], max_pos = 0;\r\n for (int i = 0; i < j; i++){\r\n   if (A[i] > max){\r\n     max = A[i];\r\n     max_pos = i;\r\n   }\r\n }\r\n\r\n  \/\/ moving the maximum to the first position in A(even numbers list)\r\n  int temp = A[0];\r\n  A[0] = max;\r\n  A[max_pos] = temp;\r\n\r\n\r\n\/\/finding the maximum in B\r\n  max = B[0], max_pos = 0;\r\n for (int i = 0; i < p; i++){\r\n   if (B[i] > max){\r\n     max = B[i];\r\n     max_pos = i;\r\n   }\r\n }\r\n\r\n\/\/ moving the maximum to the first position in B(odd numbers list)\r\n  temp = B[0];\r\n  B[0] = max;\r\n  B[max_pos] = temp;\r\n\r\n\r\n\/\/printing the even and odd numbers in the list A and B\r\n  printf(\"Array A(List of even Numbers)\\n\");\r\n  for (int i = 0; i < j;i++){\r\n    printf(\"%d \", A[i]);\r\n  }\r\n\r\n  printf(\"\\n\");\r\n\r\n  printf(\"Array B(List of odd Numbers)\\n\");\r\n  for (int i = 0; i < p;i++){\r\n    printf(\"%d \", B[i]);\r\n  }\r\n\r\n  printf(\"\\n\\n\");\r\n\r\n  return 0;\r\n}\r\n"
+                }
+            ]
+        }
+
+
+    ],
+    "linkedList":[
+        {
+            "Type": "lab",
+            "Elements":null
+        },
+        {
+            "Type":"theory",
+            "Elements": null
+        }
+
+    ]
+}
